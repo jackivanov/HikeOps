@@ -1,17 +1,25 @@
 ---
 interface Props {
-	date: Date;
+  date: string | Date;
 }
 
 const { date } = Astro.props;
+
+// Normalize into YYYY-MM-DD string
+const raw =
+  typeof date === "string"
+    ? date
+    : date.toISOString().split("T")[0]; // "2025-05-17"
+
+// Create a formatter that ignores timezone shift
+const formatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC", // keep calendar day stable
+});
+
+const display = formatter.format(new Date(raw));
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
-</time>
+<time datetime={raw}>{display}</time>

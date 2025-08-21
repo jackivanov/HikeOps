@@ -1,9 +1,8 @@
 ---
 title: 'Fortress Lake via Chaba Trail'
 description: 'Backpacking trip to Fortress Lake, Hamber Provincial Park, BC. May 17–18, 2025.'
-pubDate: '2025-05-18'
+pubDate: '2025-05-17'
 heroImage: '../../assets/heros/IMG_2236.jpeg'
-dates: 'May 17 - 18, 2025'
 days: '2'
 distance: '61.2 km'
 elevation: '~800 m'
