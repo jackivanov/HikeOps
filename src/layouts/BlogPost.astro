@@ -5,10 +5,12 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import TripMeta from '../components/TripMeta.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, dates, days, distance, elevation, region } = Astro.props;
+
 ---
 
 <html lang="en">
@@ -60,7 +62,15 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && (
+            <Image
+              width={1020}
+              widths={[640, 1020, 1600, 2048]}
+              sizes="100vw"
+              src={heroImage}
+              alt={title}
+            />
+          )}
 				</div>
 				<div class="prose">
 					<div class="title">
@@ -74,9 +84,10 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 								)
 							}
 						</div>
-						<h1>{title}</h1>
+						<h3>{title}</h3>
 						<hr />
 					</div>
+          <TripMeta dates={dates} days={days} distance={distance} elevation={elevation} region={region} />
 					<slot />
 				</div>
 			</article>

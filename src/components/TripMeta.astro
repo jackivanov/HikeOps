@@ -1,0 +1,25 @@
+---
+const { dates, days, distance, elevation, region } = Astro.props;
+---
+
+<div class="trip-meta">
+  {dates && <div><strong>Dates:</strong> {dates}</div>}
+  {days && <div><strong>Days:</strong> {days}</div>}
+  {distance && <div><strong>Distance:</strong> {distance}</div>}
+  {elevation && <div><strong>Elevation Gain:</strong> {elevation}</div>}
+  {region && <div><strong>Region:</strong> {region}</div>}
+</div>
+
+<style>
+.trip-meta {
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  margin: 1rem auto 2rem;
+  border-radius: 8px;
+  max-width: 720px;
+}
+.trip-meta div {
+  margin: 0.25rem 0;
+}
+</style>
